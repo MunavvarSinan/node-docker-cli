@@ -1,5 +1,5 @@
 {
-  "name": "node-docker-starter",
+  "name": "node-starter",
   "version": "1.0.9",
   "description": "Nodejs Backend Starter Template",
   "type": "module",
