@@ -1,70 +1,103 @@
-# Nodejs Docker Starter Template
+# `npx nodejs-docker-starter my-app`
 
-## CLI Command
+# Nodejs-Docker-Postgres-starter
 
-This repository contains a CLI (Command-Line Interface) tool that allows you to quickly create a new Node.js project using the provided starter template. It is designed to save you time on project setup and configuration, so you can focus on building your application.
-
-## Prerequirements 
-1. Node.js (v14 or heigher)
-2. Docker
+A starter project for building Rest APIs with Node.js, Typescript, PostgreSQL, and Drizzle ORM. It provides a basic folder structure and starter files to help you get started with your own Rest API quickly and easily.
 
 ## Features
 
 - Typescript for type safety
-- PostgresQL for data storage
-- Prisma for ORM
+- PostgreSQL for data storage
+- Drizzle ORM for database operations
+- Swagger for API documentation
+- Inversify for dependency injection
+- Express for handling HTTP requests
+- Docker support for easy deployment
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- PostgreSQL
 - Docker
 
-## Installation
+### Installation
 
-To use the CLI command, you can install it globally using npm. Open your terminal or command prompt and run the following command:
+1. Installation command: `npx nodejs-docker-starter my-app`
+2. Install necessary dependencies: `cd my-app && pnpm install`
+3. Rename `.env.example` to `.env` and update the environment variables:
+   ```
+   DATABASE_URL=your_database_url
+   PORT=your_preferred_port
+   NODE_ENV=development
+   ```
+
+### Running the Application
+
+1. Start the server: `docker compose up`
+2. Access the API documentation: Open `http://localhost:<PORT>/api-docs` in your browser
+3. User routes are available at: `http://localhost:<PORT>/api/user`
+
+### Testing
+
+1. Run tests: `pnpm test`
+
+### Folder Structure
+
+```
+my-app/
+├── src/
+│   ├── application/
+│   │   ├── dto/
+│   │   ├── services/
+│   │   └── useCases/
+│   ├── common/
+│   │   └── config/
+│   ├── domain/
+│   │   ├── entities/
+│   │   └── interfaces/
+│   ├── infrastructure/
+│   │   ├── adapters/
+│   │   │   ├── errors/
+│   │   │   ├── inversify/
+│   │   │   ├── logger/
+│   │   │   └── swagger/
+│   │   ├── database/
+│   │   │   ├── migration/
+│   │   │   ├── repositories/
+│   │   │   └── schema/
+│   │   └── server.ts
+│   ├── presentation/
+│   │   ├── http/
+│   │   │   ├── controllers/
+│   │   │   └── routes/
+│   │   └── middlewares/
+│   └── index.ts
+├── .docker
 
 ```
 
-npx nodejs-docker-starter your_file_name
+### API Routes
 
-```
-## Usage
+- API Documentation: `/api-docs`
+- User Routes: `/api/user`
+  - Create User: POST `/api/user/create`
 
-Once your project directory is created, you can navigate into it and start working on your Node.js application. The starter template provides a solid foundation for building robust backend applications using Node.js, Express, Prisma, PostgreSQL, Docker, and TypeScript.
+For detailed API documentation and testing, visit the Swagger UI at `/api-docs` after starting the server.
 
-To run your application, you will need to install the project dependencies. In the project directory, run:
+### Contributing
 
-```
+We welcome contributions to improve this starter project. If you'd like to contribute, please follow these steps:
 
-pnpm install
+1. Fork the repository
+2. Create a new branch for your feature or bug fix
+3. Make your changes and commit them with clear, descriptive messages
+4. Push your changes to your fork
+5. Create a pull request to the main repository
 
-```
+For more detailed information on contributing, please see our [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
-`Note :After installing all the required dependencied you may need to change database name based on your preference in the -- docker-compose.yml`
+### License
 
-After that you can run the server in the docker by running the following command
-
-```
-
-docker compose up
-
-```
-
-To generate  migration for your prisma schema you can just run the following command : 
-
-```
-
-pnpm docker:db:migrate
-
-```
-
-After successful migration you may need to restart to docker container by running : 
-```
-
-pnpm rebuild:be
-
-```
-
-`Note : Refer to the scripts inside package.json for better understanding`
-
-# Contributing
-If you find any issues or have suggestions for improvement, feel free to open an issue or submit a pull request. Your contributions are welcome and appreciated!
-
-# License
-This project is licensed under the GPL-3.0 [ LICENSE ](https://github.com/MunavvarSinan/nodejs-prisma-docker-postgres-starter/blob/main/License) which means you can use it freely for personal or commercial purposes.
+This project is licensed under the GPL-3.0 License - see the [LICENSE](https://github.com/MunavvarSinan/nodejs-prisma-docker-postgres-starter/blob/main/LICENSE) file for details.
