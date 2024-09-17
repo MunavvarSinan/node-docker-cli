@@ -1,6 +1,6 @@
 {
   "name": "node-docker-starter",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Nodejs Backend Starter Template",
   "type": "module",
   "main": "cli.js",
