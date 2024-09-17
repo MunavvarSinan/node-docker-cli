@@ -7,7 +7,7 @@
   "bin": "./cli.js",
   "scripts": {
     "start": "node cli.js",
-    "release": "npm version patch && git push origin main --follow-tags"
+    "release": "npm version patch && git push origin main --follow-tags && npm publish"
   },
   "keywords": [],
   "author": "",
