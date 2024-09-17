@@ -9,7 +9,6 @@
     "start": "node cli.js",
     "release": "npm version patch && git push origin main --follow-tags && npm publish"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,5 +16,24 @@
     "figlet": "^1.7.0",
     "inquirer": "^11.0.1",
     "ora": "^8.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MunavvarSinan/node-starter"
+  },
+  "keywords": [
+    "node",
+    "node.js",
+    "docker",
+    "postgres",
+    "drizzle",
+    "orm",
+    "rest",
+    "api",
+    "starter",
+    "cli",
+    "template",
+    "boilerplate"
+  ],
+  "homepage": "https: //github.com/MunavvarSinan/node-starter#readme"
 }
