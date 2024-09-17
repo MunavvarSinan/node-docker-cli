@@ -44,6 +44,28 @@ const promptProjectName = async () => {
     return answers.repoName;
 };
 
+const updatePackageJsonName = (projectPath, newName) => {
+    const packageJsonPath = path.join(projectPath, 'package.json');
+
+    // Check if the package.json file exists
+    if (!fs.existsSync(packageJsonPath)) {
+        console.error(chalk.red(`❌ Error: No package.json found in ${projectPath}`));
+        return;
+    }
+
+    // Read the package.json file
+    const packageJsonContent = fs.readFileSync(packageJsonPath, 'utf-8');
+    const packageJsonData = JSON.parse(packageJsonContent);
+
+    // Modify the "name" field
+    packageJsonData.name = newName;
+
+    // Write the updated content back to package.json
+    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJsonData, null, 2));
+};
+
+
+
 // Main project creation function
 const createProject = async () => {
     let repoName = process.argv[2];
@@ -78,6 +100,7 @@ const createProject = async () => {
 
     try {
         await runCommandAsync(gitCloneCommand);
+        updatePackageJsonName(projectPath, repoName);
         spinner.succeed(chalk.green('✨ Project files have arrived from the magic vault!\n'));
     } catch (error) {
         spinner.fail(chalk.red('🚨 Failed to clone the repository. Something interrupted the magic.'));
